@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home QA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Smart Home QA</div>
+        <nav>
+            <button onclick="navigate('home')">Home</button>
+            <button onclick="navigate('about')">About</button>
+            <button onclick="navigate('shop')">Shop</button>
+            <button onclick="navigate('services')">QA & Repair</button>
+            <button onclick="navigate('cart')" id="cartBtn">Cart (0)</button>
+            <button onclick="navigate('login')" id="loginBtn" class="auth-btn">Login</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <h1>Welcome to Smart Home QA</h1>
+                <p>Your trusted partner for premium smart appliances, certified quality assurance, and expert device repairs.</p>
+                <button class="cta" onclick="navigate('shop')">Shop Appliances</button>
+                <button class="cta-secondary" onclick="navigate('services')">Book a Service</button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="page">
+            <h2>About Us</h2>
+            <p>Smart Home QA integrates cutting-edge home automation with rigorous quality standards. We test, sell, and repair devices to ensure your smart ecosystem runs flawlessly.</p>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop" class="page">
+            <h2>Smart Appliances Store</h2>
+            <div class="grid" id="productGrid"></div>
+        </section>
+
+        <!-- Services Section (QA & Repair) -->
+        <section id="services" class="page">
+            <h2>Our Services</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <h3>Quality Assurance Check</h3>
+                    <p>Request a certified QA inspection for your smart home setup.</p>
+                    <form id="qaForm" onsubmit="submitService(event, 'QA Request')">
+                        <input type="text" placeholder="Device Name" required>
+                        <textarea placeholder="Describe the QA testing required" required></textarea>
+                        <button type="submit">Submit QA Request</button>
+                    </form>
+                </div>
+                <div class="service-card">
+                    <h3>Device Repair</h3>
+                    <p>Faulty device? Let our experts fix your smart appliances.</p>
+                    <form id="repairForm" onsubmit="submitService(event, 'Repair Request')">
+                        <input type="text" placeholder="Device Model" required>
+                        <textarea placeholder="Describe the issue" required></textarea>
+                        <button type="submit">Submit Repair Ticket</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart" class="page">
+            <h2>Your Cart</h2>
+            <div id="cartItems"></div>
+            <div class="cart-summary">
+                <h3>Total: $<span id="cartTotal">0</span></h3>
+                <button class="cta" onclick="checkout()">Checkout</button>
+            </div>
+        </section>
+
+        <!-- Login / Signup Section -->
+        <section id="login" class="page">
+            <div class="auth-container">
+                <h2>Account Access</h2>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit">Login / Sign Up</button>
+                    <p id="loginMessage" class="error-msg"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <footer>
+        <p>&copy; 2026 Smart Home QA. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
